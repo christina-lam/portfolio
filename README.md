@@ -1,4 +1,5 @@
-# Hi, I am Christina Lam
+# Hi, I am Christina Lam ![headshot](assets/images/your-image.png)
+
 MBA Candidate @ Univeristy of California, Riverside (Business Analytics & Marketing)
 
 SaaS • Product Marketing • Go-to-Market Strategy
