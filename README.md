@@ -1,5 +1,6 @@
 # Hi, I am Christina Lam
 MBA Candidate @ Univeristy of California, Riverside (Business Analytics & Marketing)
+
 SaaS • Product Marketing • Go-to-Market Strategy
 
 Hi! I’m an MBA candidate at the A. Gary Anderson Graduate School of Management (UCR) focused on applying analytics to product marketing for SaaS. This portfolio highlights project work in GTM planning, customer analytics, and marketing performance that demonstrates how I turn insight into action.
