@@ -11,7 +11,7 @@ Hi! I’m an MBA candidate at the A. Gary Anderson Graduate School of Management
 
 **Location:** Riverside, CA (Open to Remote, Hybrid, and Relocation)
 
-**Contact:** [LinkedIn] (https://www.linkedin.com/in/chrxtinaa/) • [Email] (mailto:chlam962@gmail.com) • 415.653.9052
+**Contact:** [LinkedIn](https://www.linkedin.com/in/chrxtinaa/) • [Email](mailto:chlam962@gmail.com) • 415.653.9052
 
 ---
 
@@ -49,6 +49,3 @@ Hi! I’m an MBA candidate at the A. Gary Anderson Graduate School of Management
 **Marketing:** Product Marketing, Positioning, Messaging, GTM, Competitive Analysis  
 **Analytics:** Excel/Sheets, Tableau/Power BI, (basic) SQL/Python  
 **SaaS:** Retention, Funnels, Churn, Pricing & Packaging
-
-## Contact
-[LinkedIn](#) • [Email](mailto:youremail@example.com)
