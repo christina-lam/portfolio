@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christina Lam — Marketing Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #F6F5FC;
+    --paper-deep: #ECEAF9;
+    --ink: #2E2C50;
+    --ink-soft: #625F8E;
+    --accent: #7B7FE0;
+    --accent-deep: #5F63C9;
+    --pop: #F3A0BE;
+    --sun: #F5CE6B;
+    --mint: #8FD9C4;
+    --line: rgba(46,44,80,0.14);
+    --card-bg: #FFFFFF;
+    --radius: 18px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--accent);color:#fff;}
+  a{color:inherit;text-decoration:none;}
+  svg{display:block;}
+
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--accent-deep);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:7px;height:7px;
+    border-radius:50%;
+    background:var(--pop);
+    display:inline-block;
+  }
+
+  h1,h2,h3{font-family:'Quicksand',sans-serif;letter-spacing:-0.01em;font-weight:700;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 40px;
+    background:rgba(246,245,252,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-mark{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Quicksand',sans-serif; font-weight:700; font-size:1.08rem;
+  }
+  .nav-mark svg{width:24px;height:24px;}
+  .nav-links{display:flex; align-items:center; gap:30px; font-size:0.88rem; font-weight:600;}
+  .nav-links a:not(.btn){position:relative; padding-bottom:3px; transition:color .2s;}
+  .nav-links a:not(.btn)::after{
+    content:""; position:absolute; left:0; bottom:0; width:0; height:2px;
+    border-radius:2px;
+    background:var(--pop); transition:width .25s ease;
+  }
+  .nav-links a:not(.btn):hover::after{width:100%;}
+  @media (max-width:820px){ .nav-links a:not(.btn){display:none;} nav{padding:14px 20px;} }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--accent); color:#fff !important;
+    padding:11px 20px; border-radius:30px;
+    font-family:'Quicksand',sans-serif; font-weight:700; font-size:0.86rem;
+    box-shadow:0 6px 16px rgba(123,127,224,0.35);
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-2px); background:var(--accent-deep); box-shadow:0 10px 22px rgba(123,127,224,0.42);}
+  .btn svg{width:16px;height:16px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex; flex-direction:column; justify-content:center;
+    padding:130px 40px 80px;
+    overflow:hidden;
+  }
+  .contour-bg{
+    position:absolute; inset:0; width:100%; height:100%;
+    z-index:0; opacity:0.55; pointer-events:none;
+  }
+  .hero-inner{
+    position:relative; z-index:1; max-width:1100px;
+    display:grid; grid-template-columns:1fr 260px; gap:56px; align-items:center;
+  }
+  .coord-tag{
+    font-family:'JetBrains Mono',monospace; font-size:0.75rem; color:var(--ink-soft);
+    margin-top:22px; letter-spacing:0.03em; display:flex; align-items:center; gap:8px;
+  }
+  .hero h1{
+    font-size:clamp(2.8rem, 6.4vw, 5.2rem);
+    line-height:1; margin-top:16px;
+    color:var(--ink);
+  }
+  .hero h1 span{color:var(--accent);}
+  .hero-role{
+    font-family:'Source Serif 4', serif; font-style:italic; font-weight:400;
+    font-size:clamp(1.1rem, 2vw, 1.45rem);
+    color:var(--ink-soft); margin-top:18px; max-width:560px;
+  }
+  .hero-note{
+    margin-top:30px; font-size:0.95rem; color:var(--ink-soft); max-width:520px;
+    border-left:3px solid var(--pop); padding-left:16px; border-radius:2px;
+  }
+  .hero-actions{margin-top:34px; display:flex; gap:14px; flex-wrap:wrap;}
+  .hero-actions .ghost{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 20px; border-radius:30px; border:1.5px solid var(--line);
+    font-family:'Quicksand',sans-serif; font-weight:700; font-size:0.86rem;
+    transition:border-color .2s, transform .2s;
+  }
+  .hero-actions .ghost:hover{border-color:var(--accent); transform:translateY(-2px);}
+  .hero-actions .ghost svg{width:16px;height:16px;}
+
+  .headshot-wrap{
+    position:relative; width:100%; aspect-ratio:1/1.05;
+    border-radius:28px; overflow:hidden;
+    border:6px solid var(--card-bg);
+    box-shadow:0 18px 40px rgba(46,44,80,0.18);
+    background:var(--paper-deep);
+  }
+  .headshot-wrap img{width:100%; height:100%; object-fit:cover; display:block;}
+  .headshot-sparkle{
+    position:absolute; z-index:2;
+  }
+  .s1{top:-16px; right:-14px; width:34px;}
+  .s2{bottom:-12px; left:-14px; width:24px;}
+
+  .scroll-cue{
+    position:absolute; bottom:34px; left:40px; z-index:1;
+    font-family:'JetBrains Mono',monospace; font-size:0.7rem; letter-spacing:0.1em;
+    color:var(--ink-soft); display:flex; align-items:center; gap:10px;
+  }
+  .scroll-cue .line{width:38px; height:1px; background:var(--ink-soft); animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:0.3;}50%{opacity:1;}}
+  @media (max-width:760px){ .hero-inner{grid-template-columns:1fr;} .headshot-wrap{max-width:220px; margin:0 auto;} }
+
+  section{padding:110px 40px; max-width:1180px; margin:0 auto; position:relative;}
+  .section-head{margin-bottom:52px;}
+  .section-head h2{font-size:clamp(1.9rem,4vw,2.6rem); margin-top:12px;}
+
+  /* ---------- TOOLKIT ---------- */
+  .toolkit-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+  }
+  .toolkit-item{
+    background:var(--card-bg); padding:26px 22px; min-height:160px; border-radius:var(--radius);
+    display:flex; flex-direction:column; justify-content:space-between;
+    border:1px solid var(--line);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .toolkit-item:hover{transform:translateY(-5px); box-shadow:0 14px 26px rgba(46,44,80,0.1);}
+  .toolkit-item .icon{
+    width:34px; height:34px; border-radius:10px; background:var(--paper-deep);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .toolkit-item .icon svg{width:19px;height:19px;stroke:var(--accent-deep);}
+  .toolkit-item h4{font-family:'Quicksand',sans-serif; font-weight:600; font-size:1rem; margin-top:16px;}
+  @media (max-width:820px){ .toolkit-grid{grid-template-columns:repeat(2,1fr);} }
+
+  .tools-strip{
+    margin-top:28px; display:flex; flex-wrap:wrap; gap:10px;
+  }
+  .tools-strip span{
+    font-family:'JetBrains Mono',monospace; font-size:0.72rem;
+    border:1px solid var(--line); padding:8px 14px; border-radius:20px;
+    color:var(--ink-soft); background:var(--card-bg);
+  }
+
+  /* ---------- ROUTE / CASE STUDIES ---------- */
+  .route-wrap{position:relative;}
+  .route-line{
+    position:absolute; left:50%; top:0; bottom:0; width:2px;
+    transform:translateX(-50%);
+    background-image:linear-gradient(var(--accent) 55%, transparent 45%);
+    background-size:2px 14px; opacity:0.4;
+  }
+  @media (max-width:900px){ .route-line{left:24px;} }
+
+  .waypoint{
+    display:grid; grid-template-columns:1fr 60px 1fr; align-items:start;
+    margin-bottom:80px; position:relative;
+  }
+  .waypoint:last-child{margin-bottom:0;}
+  .wp-card{
+    background:var(--card-bg); border:1px solid var(--line); border-radius:var(--radius);
+    padding:32px; position:relative;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .wp-card:hover{transform:translateY(-4px); box-shadow:0 18px 32px rgba(46,44,80,0.1);}
+  .waypoint:nth-child(odd) .wp-card{grid-column:1;}
+  .waypoint:nth-child(even) .wp-card{grid-column:3;}
+  .wp-pin{
+    grid-column:2; display:flex; justify-content:center; padding-top:14px;
+  }
+  .wp-pin svg{width:26px;height:26px;}
+  .wp-num{
+    font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--accent-deep);
+    letter-spacing:0.06em;
+  }
+  .wp-card h3{font-size:1.4rem; margin-top:10px;}
+  .wp-tag{
+    font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:var(--pop);
+    margin-top:8px; display:block;
+  }
+  .wp-challenge{
+    font-family:'Source Serif 4',serif; font-style:italic; color:var(--ink-soft);
+    margin-top:16px; font-size:1.02rem;
+  }
+  .wp-list{margin-top:18px; padding-left:0; list-style:none;}
+  .wp-list li{
+    font-size:0.92rem; color:var(--ink-soft); padding-left:18px; position:relative; margin-bottom:8px;
+  }
+  .wp-list li::before{
+    content:"✦"; position:absolute; left:0; top:0.05em; color:var(--accent); font-size:0.7rem;
+  }
+  .wp-demo{
+    margin-top:20px; padding-top:16px; border-top:1px solid var(--line);
+    font-size:0.82rem; font-weight:600; color:var(--accent-deep);
+  }
+  @media (max-width:900px){
+    .waypoint{grid-template-columns:56px 1fr;}
+    .wp-pin{grid-column:1; padding-top:32px;}
+    .waypoint:nth-child(odd) .wp-card, .waypoint:nth-child(even) .wp-card{grid-column:2;}
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid; grid-template-columns:240px 1fr; gap:56px; align-items:start;
+  }
+  .about-photo{
+    width:100%; aspect-ratio:1/1.1; border-radius:22px; overflow:hidden;
+    border:6px solid var(--card-bg); box-shadow:0 14px 30px rgba(46,44,80,0.15);
+  }
+  .about-photo img{width:100%; height:100%; object-fit:cover;}
+  .badge{
+    margin-top:20px; border:1.5px dashed var(--accent); border-radius:14px;
+    padding:16px 18px; font-family:'JetBrains Mono',monospace; font-size:0.72rem;
+    color:var(--accent-deep); line-height:1.7; display:flex; gap:10px; align-items:flex-start;
+  }
+  .badge svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;}
+  .about-copy p{font-size:1.03rem; color:var(--ink-soft); margin-bottom:20px; max-width:640px;}
+  .about-copy strong{color:var(--ink); font-weight:700;}
+  @media (max-width:820px){ .about-grid{grid-template-columns:1fr;} .about-photo{max-width:220px; margin:0 auto;} }
+
+  /* ---------- CONTACT / BASECAMP ---------- */
+  .basecamp{
+    background:var(--ink); color:var(--paper);
+    padding:120px 40px; text-align:center; margin-top:50px;
+    position:relative; overflow:hidden; border-radius:36px 36px 0 0;
+  }
+  .basecamp .eyebrow{color:var(--sun); justify-content:center;}
+  .basecamp .eyebrow::before{background:var(--sun);}
+  .basecamp h2{
+    font-size:clamp(2rem,4.6vw,3.2rem); margin-top:16px; max-width:760px; margin-left:auto; margin-right:auto;
+  }
+  .basecamp p{
+    font-family:'Source Serif 4',serif; font-style:italic; font-size:1.12rem;
+    color:#C4C2E6; margin-top:18px;
+  }
+  .contact-links{
+    margin-top:40px; display:flex; gap:16px; justify-content:center; flex-wrap:wrap;
+  }
+  .contact-links a{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Quicksand',sans-serif; font-weight:700; font-size:0.88rem;
+    border:1.5px solid rgba(246,245,252,0.3); padding:13px 24px; border-radius:30px;
+    transition:all .2s;
+  }
+  .contact-links a svg{width:16px;height:16px;}
+  .contact-links a:hover{background:var(--paper); color:var(--ink); border-color:var(--paper);}
+  .contact-links a.solid{background:var(--accent); border-color:var(--accent); color:#fff;}
+  .contact-links a.solid:hover{background:var(--sun); border-color:var(--sun); color:var(--ink);}
+  footer{
+    text-align:center; padding:26px; font-family:'JetBrains Mono',monospace;
+    font-size:0.7rem; color:var(--paper); background:var(--ink); opacity:0.55;
+  }
+
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-mark">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C7.6 2 4 5.6 4 10c0 6 8 12 8 12s8-6 8-12c0-4.4-3.6-8-8-8Z" stroke="#7B7FE0" stroke-width="1.8"/><circle cx="12" cy="10" r="2.6" fill="#F3A0BE"/></svg>
+    Christina Lam
+  </div>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#toolkit">Toolkit</a>
+    <a href="#about">About</a>
+    <a class="btn" href="christina-lam-resume.pdf" download>
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 21h16"/></svg>
+      Resume
+    </a>
+  </div>
+</nav>
+
+<header class="hero">
+  <svg class="contour-bg" viewBox="0 0 1400 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="#7B7FE0" stroke-width="1">
+      <path d="M-50,120 C 300,60 700,180 1450,90" opacity="0.18"/>
+      <path d="M-50,220 C 320,150 680,270 1450,190" opacity="0.15"/>
+      <path d="M-50,330 C 340,260 660,370 1450,300" opacity="0.12"/>
+      <path d="M-50,600 C 300,540 700,660 1450,570" opacity="0.14"/>
+      <path d="M-50,700 C 320,640 680,740 1450,660" opacity="0.11"/>
+    </g>
+    <g opacity="0.7">
+      <path d="M980 195 l4 9 9 1 -7 6 2 9 -8-5 -8 5 2-9 -7-6 9-1 z" fill="#F5CE6B"/>
+      <path d="M1190 630 l3 7 7 1 -5 5 1 7 -6-4 -6 4 1-7 -5-5 7-1 z" fill="#F3A0BE"/>
+      <circle cx="1120" cy="140" r="3" fill="#8FD9C4"/>
+    </g>
+  </svg>
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">Field Notes / Marketing &amp; Growth</div>
+      <h1>Christina<br><span>Lam.</span></h1>
+      <p class="hero-role">MBA marketer who turns industry research, customer stories, and campaign data into positioning that sells — across B2B, B2G, and product lines.</p>
+      <p class="hero-note">Currently: Industry Solutions Intern, State &amp; Local Government at Esri. Previously: product marketing, customer marketing, and brand roles spanning tech and B2G consulting.</p>
+      <p class="coord-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7B7FE0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2L12 16.4 5.7 20.8 8 13.6 2 9.2h7.6z"/></svg>
+        MBA · UC Riverside · Beta Gamma Sigma, Top 20%
+      </p>
+      <div class="hero-actions">
+        <a class="ghost" href="christina-lam-resume.pdf" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2E2C50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 21h16"/></svg>
+          Download résumé
+        </a>
+        <a class="ghost" href="#work">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2E2C50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+          See the work
+        </a>
+      </div>
+    </div>
+    <div class="headshot-wrap">
+      <img src="christina-headshot.jpg" alt="Portrait of Christina Lam">
+      <svg class="headshot-sparkle s1" viewBox="0 0 24 24" fill="#F5CE6B"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2L12 16.4 5.7 20.8 8 13.6 2 9.2h7.6z"/></svg>
+      <svg class="headshot-sparkle s2" viewBox="0 0 24 24" fill="#8FD9C4"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2L12 16.4 5.7 20.8 8 13.6 2 9.2h7.6z"/></svg>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>SCROLL</span><span class="line"></span><span>SOUTH</span></div>
+</header>
+
+<section id="toolkit">
+  <div class="section-head reveal">
+    <div class="eyebrow">Legend</div>
+    <h2>How I work</h2>
+  </div>
+  <div class="toolkit-grid reveal">
+    <div class="toolkit-item">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 6-6 2 2-6 6-2z"/></svg></div>
+      <h4>Product positioning &amp; GTM strategy</h4>
+    </div>
+    <div class="toolkit-item">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+      <h4>Market &amp; competitive research</h4>
+    </div>
+    <div class="toolkit-item">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div>
+      <h4>Industry trend analysis</h4>
+    </div>
+    <div class="toolkit-item">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+      <h4>Customer storytelling &amp; case studies</h4>
+    </div>
+    <div class="toolkit-item">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/><path d="M8 14h4"/></svg></div>
+      <h4>Content &amp; campaign management</h4>
+    </div>
+    <div class="toolkit-item">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-7-7 18-2-8-8-3z"/></svg></div>
+      <h4>Sales enablement</h4>
+    </div>
+    <div class="toolkit-item">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v4l4 8a2 2 0 0 1-2 3H7a2 2 0 0 1-2-3l4-8z"/><path d="M9 14h6"/></svg></div>
+      <h4>A/B testing &amp; marketing analytics</h4>
+    </div>
+    <div class="toolkit-item">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+      <h4>Customer insights</h4>
+    </div>
+  </div>
+  <div class="tools-strip reveal">
+    <span>Adobe Experience Manager</span>
+    <span>Adobe Workfront</span>
+    <span>HubSpot Marketing Hub</span>
+    <span>Google Analytics</span>
+  </div>
+</section>
+
+<section id="work">
+  <div class="section-head reveal">
+    <div class="eyebrow">The Route</div>
+    <h2>Selected work</h2>
+  </div>
+
+  <div class="route-wrap">
+    <div class="route-line"></div>
+
+    <div class="waypoint reveal">
+      <div class="wp-card">
+        <span class="wp-num">WAYPOINT 01</span>
+        <h3>Industry Marketing &amp; Customer Storytelling</h3>
+        <span class="wp-tag">Esri — State &amp; Local Government</span>
+        <p class="wp-challenge">Turn complex government industry trends and customer outcomes into marketing content people actually use.</p>
+        <ul class="wp-list">
+          <li>Analyzed professional associations and emerging industry trends</li>
+          <li>Used findings to shape content strategy and future campaigns</li>
+          <li>Authored customer and partner case studies</li>
+          <li>Translated business outcomes into sales enablement content</li>
+          <li>Managed customer-facing assets through Workfront and AEM</li>
+        </ul>
+        <p class="wp-demo">Demonstrates: industry marketing · research · storytelling · content strategy</p>
+      </div>
+      <div class="wp-pin">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7B7FE0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11.4A7 7 0 0 0 5 9.6C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.6" r="2.4" fill="#F3A0BE" stroke="none"/></svg>
+      </div>
+    </div>
+
+    <div class="waypoint reveal">
+      <div class="wp-card">
+        <span class="wp-num">WAYPOINT 02</span>
+        <h3>Product Marketing &amp; GTM</h3>
+        <span class="wp-tag">Lead Pursuits — Market Intelligence Platform</span>
+        <p class="wp-challenge">Strengthen how a market-intelligence platform communicated its value to customers and investors.</p>
+        <ul class="wp-list">
+          <li>Developed product demos and investor-facing pitch materials</li>
+          <li>Conducted market and customer research</li>
+          <li>Turned customer pain points into buyer personas and journey maps</li>
+          <li>Sharpened positioning, targeting, and GTM strategy from those insights</li>
+          <li>Ran A/B tests and analyzed HubSpot campaign performance</li>
+        </ul>
+        <p class="wp-demo">Demonstrates: product marketing · positioning · customer insights · analytics</p>
+      </div>
+      <div class="wp-pin">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7B7FE0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11.4A7 7 0 0 0 5 9.6C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.6" r="2.4" fill="#8FD9C4" stroke="none"/></svg>
+      </div>
+    </div>
+
+    <div class="waypoint reveal">
+      <div class="wp-card">
+        <span class="wp-num">WAYPOINT 03</span>
+        <h3>PulseMap — 3rd Place, Esri Intern Hackathon</h3>
+        <span class="wp-tag">Cross-functional Product Sprint</span>
+        <p class="wp-challenge">Develop an innovative GIS solution to a real-world problem, from concept to live pitch.</p>
+        <ul class="wp-list">
+          <li>Collaborated with a cross-functional team to build PulseMap, a prototype geospatial app for environmental health screening</li>
+          <li>Led research and storytelling for the pitch</li>
+          <li>Presented the solution to 500+ employees and judges</li>
+          <li>Placed 3rd out of all intern teams</li>
+        </ul>
+        <p class="wp-demo">Demonstrates: innovation · cross-functional collaboration · presentation</p>
+      </div>
+      <div class="wp-pin">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7B7FE0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11.4A7 7 0 0 0 5 9.6C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.6" r="2.4" fill="#F5CE6B" stroke="none"/></svg>
+      </div>
+    </div>
+
+    <div class="waypoint reveal">
+      <div class="wp-card">
+        <span class="wp-num">WAYPOINT 04</span>
+        <h3>B2B/B2G Brand Marketing</h3>
+        <span class="wp-tag">Mulholland Consulting — Civil Engineering</span>
+        <p class="wp-challenge">Strengthen marketing and positioning for a civil engineering consulting firm serving government and private-sector clients.</p>
+        <ul class="wp-list">
+          <li>Conducted competitive and market research</li>
+          <li>Identified B2G and B2B market opportunities</li>
+          <li>Developed corporate marketing materials and client-facing content</li>
+          <li>Shaped brand messaging and positioning</li>
+          <li>Introduced Agile workflows to improve cross-functional delivery</li>
+        </ul>
+        <p class="wp-demo">Demonstrates: brand strategy · competitive intelligence · project management</p>
+      </div>
+      <div class="wp-pin">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7B7FE0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11.4A7 7 0 0 0 5 9.6C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.6" r="2.4" fill="#F3A0BE" stroke="none"/></svg>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-head reveal">
+    <div class="eyebrow">Basecamp</div>
+    <h2>About</h2>
+  </div>
+  <div class="about-grid reveal">
+    <div>
+      <div class="about-photo">
+        <img src="christina-headshot.jpg" alt="Portrait of Christina Lam">
+      </div>
+      <div class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7B7FE0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10z"/><path d="M8.5 13.5L7 21l5-2.5L17 21l-1.5-7.5"/></svg>
+        BETA GAMMA SIGMA<br>TOP 20% · MBA COHORT<br>UC RIVERSIDE
+      </div>
+    </div>
+    <div class="about-copy">
+      <p>I'm an MBA graduate from <strong>UC Riverside</strong>, concentrated in Business Analytics &amp; Marketing and inducted into <strong>Beta Gamma Sigma</strong> for graduating in the top 20% of my program.</p>
+      <p>My path has moved through industry marketing, product marketing, and customer marketing — currently as an <strong>Industry Solutions Intern for State &amp; Local Government at Esri</strong>, and previously as a Product Marketing Analyst, Marketing Assistant, and Marketing Coordinator.</p>
+      <p>What ties the work together: I take research — market trends, competitor moves, customer conversations — and turn it into positioning, content, and campaigns that make it easier for someone to say yes. I'm equally comfortable digging into HubSpot data as I am writing the customer story that data supports.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="basecamp">
+  <div class="eyebrow">End of Route</div>
+  <h2>Let's build the next case study together.</h2>
+  <p>Open to product marketing, industry marketing, and customer marketing roles.</p>
+  <div class="contact-links">
+    <a class="solid" href="mailto:chlam962@gmail.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+      chlam962@gmail.com
+    </a>
+    <a href="https://www.linkedin.com/in/-christinalam/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v5"/><circle cx="8" cy="8" r="0.5" fill="currentColor"/><path d="M12 16v-3a2 2 0 0 1 4 0v3"/><path d="M12 11v.5"/></svg>
+      linkedin.com/in/-christinalam
+    </a>
+    <a href="christina-lam-resume.pdf" download>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 21h16"/></svg>
+      Download résumé
+    </a>
+  </div>
+</section>
+
+<footer>© 2026 CHRISTINA LAM · CHARTED WITH CARE</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.12});
+  revealEls.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
