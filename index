@@ -388,7 +388,7 @@
     Christina Lam
   </div>
   <div class="nav-links">
-    <a href="#about-me">About</a>
+    <a href="#about-me">About Me</a>
     <a href="#toolkit">Skills</a>
     <a href="#work">Selected Work</a>
     <a class="btn" href="christina-lam-resume.pdf" download>
@@ -549,7 +549,7 @@
           <div class="uc-gallery">
             <figure class="uc-photo">
               <div class="uc-photo-frame">
-                <div class="uc-photo-placeholder">ADD PHOTO: you interviewing or speaking with a customer at Esri User Conference</div>
+                <div class="uc-photo-placeholder"></div>
                 <img src="esri-uc-interview.jpg" alt="Christina Lam speaking with a customer at Esri User Conference" onerror="this.style.display='none'">
               </div>
               <figcaption><strong>From conversation to case study</strong>Customer interviews helped surface the challenge, solution, and outcomes that would shape the story.</figcaption>
