@@ -299,14 +299,21 @@
     margin:0; background:var(--card-bg); border:1px solid var(--line); border-radius:12px; overflow:hidden;
   }
   .uc-photo-frame{
-    aspect-ratio:4/3; position:relative; background:var(--paper-deep);
-    display:flex; align-items:center; justify-content:center; overflow:hidden;
+    position:relative;
+    background:var(--paper-deep);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
   }
-  .uc-photo-frame img{width:100%; height:100%; object-fit:cover; display:block;}
-    position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding:18px; text-align:center;
-    font-family:'JetBrains Mono',monospace; font-size:0.68rem; line-height:1.5; color:var(--ink-soft);
+  .uc-photo-frame img{
+    width:100%;
+    height:auto;
+    max-height:420px;
+    object-fit:contain;
+    display:block;
   }
-  .uc-photo figcaption{padding:12px 14px 14px; font-size:0.78rem; color:var(--ink-soft); line-height:1.45;}
+  .uc-photo figcaption{display:block; width:100%; padding:12px 14px 14px; font-size:0.78rem; color:var(--ink-soft); line-height:1.45; text-align:left;}
   .uc-photo figcaption strong{display:block; color:var(--ink); margin-bottom:3px; font-size:0.8rem;}
 
   .case-study-links{margin-top:22px; padding-top:18px; border-top:1px solid var(--line);}
@@ -565,16 +572,14 @@
           <div class="uc-gallery">
             <figure class="uc-photo">
               <div class="uc-photo-frame">
-                <div class="uc-photo-placeholder">: you interviewing or speaking with a customer at Esri User Conference</div>
-                <img src="esri-uc-interview.jpg" alt="Christina Lam speaking with a customer at Esri User Conference" onerror="this.style.display='none'">
+                <img src="esri-uc-interview.jpg" alt="Christina Lam speaking with a customer at Esri User Conference">
               </div>
               <figcaption><strong>From conversation to case study</strong>Customer interviews helped surface the challenge, solution, and outcomes that would shape the story.</figcaption>
             </figure>
 
             <figure class="uc-photo">
               <div class="uc-photo-frame">
-                <div class="uc-photo-placeholder">: you at Esri User Conference or engaging with attendees</div>
-                <img src="esri-uc-conference.jpg" alt="Christina Lam at Esri User Conference" onerror="this.style.display='none'">
+                <img src="esri-uc-conference.jpg" alt="Christina Lam at Esri User Conference">
               </div>
               <figcaption><strong>Customer discovery in the field</strong>Gathering firsthand perspectives from customers and partners to identify strong story opportunities and business outcomes.</figcaption>
             </figure>
@@ -607,15 +612,13 @@
         <div class="uc-gallery">
           <figure class="uc-photo">
             <div class="uc-photo-frame">
-              <div class="uc-photo-placeholder"><br>esri-hackathon-1.jpg</div>
-              <img src="esri-hackathon-1.jpg" alt="Christina Lam presenting PulseMap at the Esri Intern Hackathon" onerror="this.style.display='none'">
+              <img src="esri-hackathon-1.jpg" alt="Christina Lam presenting PulseMap at the Esri Intern Hackathon">
             </div>
             <figcaption><strong>Presenting PulseMap</strong>I presented our team’s research, solution, and story to an audience of 500+ Esri employees and judges.</figcaption>
           </figure>
           <figure class="uc-photo">
             <div class="uc-photo-frame">
-              <div class="uc-photo-placeholder"><br>esri-hackathon-2.jpg</div>
-              <img src="esri-hackathon-2.jpg" alt="Arcitects team celebrating 3rd place at the Esri Intern Hackathon" onerror="this.style.display='none'">
+              <img src="esri-hackathon-2.jpg" alt="Arcitects team celebrating 3rd place at the Esri Intern Hackathon">
             </div>
             <figcaption><strong>3rd Place</strong>Our cross-functional team, Arcitects, earned 3rd place in the Esri Intern Hackathon for PulseMap.</figcaption>
           </figure>
