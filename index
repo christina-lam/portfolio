@@ -727,7 +727,6 @@
   }, {threshold:0.12});
   revealEls.forEach(el=>io.observe(el));
 </script>
-<!-- redeploy -->
 
 </body>
 </html>
